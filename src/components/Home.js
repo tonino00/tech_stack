@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View, Image, YellowBox  } from 'react-native';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
-import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right, Title } from 'native-base';
+import { Container, Header, Content, Card, CardItem, Thumbnail,  Button, Icon, Left, Body, Title, Right } from 'native-base';
 
 // import * as QG_api from './QG_api/api';
 
@@ -13,7 +13,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('http://192.168.0.17:8005/eventos/')
+    return fetch('https://newstech.herokuapp.com/noticia/')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -30,9 +30,7 @@ export default class Home extends React.Component {
       });
   }
 
-
-
-
+  
 
   render(){
 
@@ -61,41 +59,35 @@ export default class Home extends React.Component {
           data={this.state.dataSource}
           renderItem={({item}) => 
           <Content>
-          <Card>
-            <CardItem>
-              <Left>
-                <Thumbnail source={{uri: item.foto}} />
+            <Card style={{flex: 0}}>
+              <CardItem>
+                <Left>
+                  <Thumbnail source={require('../img/logo.png')} />
+                  <Body>
+                    <Text>{item.nome}</Text>
+                    <Text note>{item.data_postagem}</Text>
+                  </Body>
+                </Left>
+              </CardItem>
+              <CardItem>
                 <Body>
-                  <Text>{item.nome}</Text>
-                  <Text note>{item.descricao}</Text>
+                  <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1, margin:0}}/>
+                  <Text>
+                    {item.descricao}
+                  </Text>
                 </Body>
-              </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{uri:item.foto}} style={{height: 200, width: null, flex: 1}}/>
-            </CardItem>
-            <CardItem>
-              <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
-              </Left>
-              <Body>
-                <Button transparent>
-                  <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
-                </Button>
-              </Body>
-              <Right>
-              <Button transparent>
-                <Icon active name="cash" />
-                <Text>{item.valor}</Text>
-              </Button>
-              </Right>
-            </CardItem>
-          </Card>
-        </Content>
+              </CardItem>
+              <CardItem>
+                <Left>
+                  <Button transparent textStyle={{color: '#87838B'}}>
+                    <Icon name="thumbs-up" />
+                    <Text>{item.comentario}</Text>
+                  </Button>
+                </Left>
+              </CardItem>
+            </Card>
+          </Content>
+
         }
           keyExtractor={(item, index) => index.toString()}
         />

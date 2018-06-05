@@ -13,7 +13,7 @@ export default class Noticias extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('http://192.168.0.17:8005/noticia/')
+    return fetch('https://newstech.herokuapp.com/noticia/')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -62,7 +62,7 @@ export default class Noticias extends React.Component {
             <Card style={{flex: 0}}>
               <CardItem>
                 <Left>
-                  <Thumbnail source={{uri: item.foto}} />
+                 <Thumbnail source={require('../img/logo.png')} />
                   <Body>
                     <Text>NativeBase</Text>
                     <Text note>April 15, 2016</Text>
