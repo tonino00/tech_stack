@@ -1,7 +1,8 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View, Image, YellowBox  } from 'react-native';
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader']);
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Class RCTCxxModule']);
 import { Container, Header, Content, Card, CardItem, Thumbnail,  Button, Icon, Left, Body, Title, Right } from 'native-base';
+import Moment from 'react-moment';
 
 // import * as QG_api from './QG_api/api';
 
@@ -64,15 +65,15 @@ export default class Noticias extends React.Component {
                 <Left>
                  <Thumbnail source={require('../img/logo.png')} />
                   <Body>
-                    <Text>NativeBase</Text>
-                    <Text note>April 15, 2016</Text>
+                    <Text>{item.nome}</Text>
+                    <Text note>{item.data_postagem}</Text>
                   </Body>
                 </Left>
               </CardItem>
               <CardItem>
                 <Body>
                   <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1, margin:0}}/>
-                  <Text>
+                  <Text style={{marginTop:15, textAlign: 'justify'}}>
                     {item.descricao}
                   </Text>
                 </Body>
@@ -95,3 +96,4 @@ export default class Noticias extends React.Component {
     );
   }
 }
+
