@@ -65,7 +65,7 @@ export default class Home extends React.Component {
                 <Left>
                   <Thumbnail source={require('../img/logo.png')} />
                   <Body>
-                    <Text>{item.nome}</Text>
+                    <Text style={{fontWeight:'bold'}}>{item.nome.toUpperCase()}</Text>
                     <Text note>{moment(new Date(item.data_postagem)).format('llll')}</Text>
                   </Body>
                 </Left>

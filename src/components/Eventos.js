@@ -2,8 +2,8 @@ import React from 'react';
 import { FlatList, ActivityIndicator, Text, View, Image, YellowBox  } from 'react-native';
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Class RCTCxxModule']);
 import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right, Title } from 'native-base';
-
-// import * as QG_api from './QG_api/api';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 export default class Eventos extends React.Component {
 
@@ -66,8 +66,8 @@ export default class Eventos extends React.Component {
               <Left>
                 <Thumbnail source={require('../img/logo.png')} />
                 <Body>
-                  <Text>{item.nome}</Text>
-                  <Text note>{item.descricao}</Text>
+                  <Text style={{fontWeight:'bold'}}>{item.nome.toUpperCase()}</Text>
+                  <Text>{item.descricao}</Text>
                 </Body>
               </Left>
             </CardItem>
@@ -75,25 +75,18 @@ export default class Eventos extends React.Component {
               <Image source={{uri:item.foto}} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
-              <Left>
-                <Button transparent>
-                  <Icon active name="thumbs-up" />
-                  <Text>12 Likes</Text>
-                </Button>
-              </Left>
-              <Body>
-                <Button transparent>
-                  <Icon active name="chatbubbles" />
-                  <Text>4 Comments</Text>
-                </Button>
-              </Body>
-              <Right>
-              <Button transparent>
-                <Icon active name="cash" />
-                <Text>{item.valor}</Text>
-              </Button>
-              </Right>
-            </CardItem>
+              <Icon style={{color:'#1e90ff'}} name="pin" />
+              <Text>{item.endereco}</Text>
+             </CardItem>
+             <CardItem>
+              <Icon style={{color:'#1e90ff'}} name="cash" />
+              <Text>{item.valor} R$</Text>
+             </CardItem>
+             <CardItem>
+              <Icon style={{color:'#1e90ff'}} name="time" />
+              <Text note>{moment(new Date(item.horario_inicial)).format('D MMMM, h:mm a')}</Text>
+              <Text style={{marginLeft:4}} note>{moment(new Date(item.horario_final)).format('- h:mm a')}</Text>
+             </CardItem>
           </Card>
         </Content>
         }
