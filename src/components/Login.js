@@ -5,6 +5,9 @@ import {
 	Content,
 	Form,
 	Item,
+	Left,
+	Right,
+	Icon,
 	Input,
 	Label,
 	Body,
@@ -50,9 +53,15 @@ class Login extends Component {
 
 			<Container>
 			<Header>
+				<Left style={{flex: 1}}>
+					<Button  transparent onPress={() => this.props.navigation.navigate('Home')}>
+						<Icon style={{color:"#c3c3c3"}} name="arrow-back" />
+					</Button>
+				</Left>
 			  <Body>
-				<Title>Login</Title>
+				<Title style={{marginLeft: 15, marginRight: 15}}>Login</Title>
 			  </Body>
+				<Right style={{flex: 1}}/>
 			</Header>
 			<Content>
 			  <Form>
@@ -64,14 +73,14 @@ class Login extends Component {
 					onChangeText={(text) => { this.setState({ username: text }); }} />
 				</Item>
 				<Item floatingLabel last>
-				  <Label>Password</Label>
+				  <Label>Senha</Label>
 				  <Input
 					value={this.state.password}
 					secureTextEntry
 					onChangeText={(text) => { this.setState({ password: text }); }} />
 				</Item>
 				<Button style={{margin:10,marginTop:30}} block onPress={this.onPress.bind(this)}>
-				  <Text>ENTRAR</Text>
+				  <Text style={{color:'#fff'}}>ENTRAR</Text>
 				</Button>
 			  </Form>
 			</Content>
