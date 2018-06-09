@@ -71,12 +71,14 @@ export default class Home extends React.Component {
                 </Left>
               </CardItem>
               <CardItem>
-                <Body>
-                  <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1, margin:0}}/>
-                  <Text style={{marginTop:15, textAlign: 'justify'}}>
+                  <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1}}/>
+              </CardItem>
+              <CardItem>
+              <Body>
+              <Text style={{marginTop:5, textAlign:'justify'}}>
                     {item.descricao}
-                  </Text>
-                </Body>
+              </Text>
+              </Body>
               </CardItem>
               <CardItem>
                 <Left>

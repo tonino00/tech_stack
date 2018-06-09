@@ -63,20 +63,22 @@ export default class Noticias extends React.Component {
             <Card style={{flex: 0}}>
               <CardItem>
                 <Left>
-                 <Thumbnail source={require('../img/logo.png')} />
+                  <Thumbnail source={require('../img/logo.png')} />
                   <Body>
-                    <Text>{item.nome}</Text>
+                    <Text style={{fontWeight:'bold'}}>{item.nome.toUpperCase()}</Text>
                     <Text note>{moment(new Date(item.data_postagem)).format('llll')}</Text>
                   </Body>
                 </Left>
               </CardItem>
               <CardItem>
-                <Body>
-                  <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1, margin:0}}/>
-                  <Text style={{marginTop:15, textAlign: 'justify'}}>
+                  <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1}}/>
+              </CardItem>
+              <CardItem>
+              <Body>
+              <Text style={{marginTop:5, textAlign:'justify'}}>
                     {item.descricao}
-                  </Text>
-                </Body>
+              </Text>
+              </Body>
               </CardItem>
               <CardItem>
                 <Left>
@@ -96,4 +98,3 @@ export default class Noticias extends React.Component {
     );
   }
 }
-

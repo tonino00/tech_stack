@@ -76,7 +76,7 @@ export default class Eventos extends React.Component {
             </CardItem>
             <CardItem>
               <Icon style={{color:'#1e90ff'}} name="pin" />
-              <Text>{item.endereco}</Text>
+              <Text style={{textAlign:'left'}}>{item.endereco}</Text>
              </CardItem>
              <CardItem>
               <Icon style={{color:'#1e90ff'}} name="cash" />
@@ -84,7 +84,7 @@ export default class Eventos extends React.Component {
              </CardItem>
              <CardItem>
               <Icon style={{color:'#1e90ff'}} name="time" />
-              <Text note>{moment(new Date(item.horario_inicial)).format('D MMMM, h:mm a')}</Text>
+              <Text note>{moment(new Date(item.horario_inicial)).format('D MMMM  YYYY, h:mm a')}</Text>
               <Text style={{marginLeft:4}} note>{moment(new Date(item.horario_final)).format('- h:mm a')}</Text>
              </CardItem>
           </Card>

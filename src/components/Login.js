@@ -51,7 +51,7 @@ class Login extends Component {
 			<Container>
 			<Header>
 			  <Body>
-				<Title></Title>
+				<Title>Login</Title>
 			  </Body>
 			</Header>
 			<Content>

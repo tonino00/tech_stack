@@ -30,13 +30,6 @@ export const Drawer = createDrawerNavigator ({
 			}
 		},
 
-		Login: {
-			screen: Login,
-			navigationOptions: {
-				drawerLabel: 'Login',
-				drawerIcon: <Icon style={{color:'#1e90ff'}} name="person"/>
-			}
-		},
 
 		// Saibamais: {
 		// 	screen: Saibamais,
@@ -46,19 +39,27 @@ export const Drawer = createDrawerNavigator ({
 		// 	}
 		// },
 
-		Noticias: {
-			screen: Noticias,
-			navigationOptions: {
-				drawerLabel: 'Noticias',
-				drawerIcon: <Icon style={{color:'#ff1493'}} name="paper-plane"/>
-			}
-		},
+		// Noticias: {
+		// 	screen: Noticias,
+		// 	navigationOptions: {
+		// 		drawerLabel: 'Noticias',
+		// 		drawerIcon: <Icon style={{color:'#ff1493'}} name="paper-plane"/>
+		// 	}
+		// },
 
 		Eventos: {
 			screen: Eventos,
 			navigationOptions: {
 				drawerLabel: 'Eventos',
 				drawerIcon: <Icon style={{color:'#008000'}} name="calendar"/>
+			}
+		},
+
+		Login: {
+			screen: Login,
+			navigationOptions: {
+				drawerLabel: 'Login',
+				drawerIcon: <Icon style={{color:'#1e90ff'}} name="person"/>
 			}
 		},
 		// Videos: {
