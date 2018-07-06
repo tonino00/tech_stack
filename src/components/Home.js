@@ -52,7 +52,7 @@ export default class Home extends React.Component {
           </Button>
           </Left>
           <Body>
-            <Title style={{marginLeft: 2, marginRight: 2}}>News Tech</Title>
+            <Title style={{marginLeft: 2, marginRight: 2}}>Noticias</Title>
           </Body>
           <Right style={{flex: 1}}/>
         </Header>

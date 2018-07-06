@@ -53,7 +53,7 @@ export default class Eventos extends React.Component {
           </Button>
           </Left>
           <Body>
-            <Title style={{marginLeft: 2, marginRight: 2}}>News Tech</Title>
+            <Title style={{marginLeft: 2, marginRight: 2}}>Eventos</Title>
           </Body>
           <Right style={{flex: 1}}/>
         </Header>
