@@ -1,11 +1,15 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image, YellowBox  } from 'react-native';
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Class RCTCxxModule']);
-import { Container, Header, Content, Card, CardItem, Thumbnail, Button, Icon, Left, Body, Right, Title } from 'native-base';
+import { FlatList, ActivityIndicator, Text, View, Image, StyleSheet, StatusBar  } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail,  Button, Icon, Left, Body, Title, Right, List, ListItem } from 'native-base';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-export default class Eventos extends React.Component {
+
+export default class Home extends React.Component {
+
+  onLearnMore = (item) => {
+    this.props.navigation.navigate('EventList', {...item});
+}
 
   constructor(props){
     super(props);
@@ -30,69 +34,68 @@ export default class Eventos extends React.Component {
       });
   }
 
-
-
-
+  
 
   render(){
 
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
+      <View style={{flex:1, alignItems:'center',justifyContent:'center', height:100}}>
+          <ActivityIndicator color='blue'/>
+      </View>
       )
-    }
+  }
 
     return(
       <Container>
-        <Header>
+        <Header style={{backgroundColor:'#ff0000'}}>
+        <StatusBar
+           backgroundColor='#333'
+         />
         <Left style={{flex: 1}}>
           <Button transparent transparent onPress={() => this.props.navigation.openDrawer('DrawerOpen')} >
               <Icon name='menu' />
           </Button>
           </Left>
-          <Body>
-            <Title style={{marginLeft: 2, marginRight: 2}}>Eventos</Title>
+          <Body style={styles.ajust}>
+            <Title>Eventos</Title>
           </Body>
           <Right style={{flex: 1}}/>
         </Header>
         <FlatList
           data={this.state.dataSource}
-          renderItem={({item}) => 
-          <Content>
-          <Card>
-            <CardItem>
+          renderItem={({item}) =>
+        
+        <Content>
+          <List>
+            <ListItem thumbnail
+              onPress={()=> this.onLearnMore(item)}>
               <Left>
-                <Thumbnail source={require('../img/logo.png')} />
-                <Body>
-                  <Text style={{fontWeight:'bold'}}>{item.nome.toUpperCase()}</Text>
-                  <Text>{item.descricao}</Text>
-                </Body>
+                <Thumbnail square source={{ uri: item.foto }}/>
               </Left>
-            </CardItem>
-            <CardItem cardBody>
-              <Image source={{uri:item.foto}} style={{height: 200, width: null, flex: 1}}/>
-            </CardItem>
-            <CardItem>
-              <Icon style={{color:'#1e90ff'}} name="pin" />
-              <Text style={{textAlign:'left'}}>{item.endereco}</Text>
-             </CardItem>
-             <CardItem>
-              <Icon style={{color:'#1e90ff'}} name="cash" />
-              <Text>{item.valor} R$</Text>
-             </CardItem>
-             <CardItem>
-              <Icon style={{color:'#1e90ff'}} name="time" />
-              <Text note>{moment(new Date(item.horario_inicial)).format('D MMMM  YYYY, h:mm a')}</Text>
-              <Text style={{marginLeft:4}} note>{moment(new Date(item.horario_final)).format('- h:mm a')}</Text>
-             </CardItem>
-          </Card>
+              <Body>
+                <Text style={{fontWeight:'bold', fontSize:11}}>{item.nome.toUpperCase()}</Text>
+                <Text style={{fontSize:10}}>{item.descricao.substr(0,28)+'..'}</Text>
+              </Body>
+              <Right>
+                <Text note>{moment(new Date(item.horario_inicial)).format('D/MM/YYYY')}</Text>
+              </Right>
+              </ListItem>
+            </List>
         </Content>
-        }
-          keyExtractor={(item, index) => index.toString()}
-        />
+                }
+                keyExtractor={(item, index) =>index.toString()}
+                style={{flex:1}}
+                />
       </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  ajust: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});

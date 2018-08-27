@@ -1,12 +1,15 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, Image, YellowBox  } from 'react-native';
-YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader', 'Class RCTCxxModule']);
-import { Container, Header, Content, Card, CardItem, Thumbnail,  Button, Icon, Left, Body, Title, Right } from 'native-base';
+import { FlatList, ActivityIndicator, Text, View, Image, StyleSheet, StatusBar  } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Thumbnail,  Button, Icon, Left, Body, Title, Right, List, ListItem } from 'native-base';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
 
 export default class Home extends React.Component {
+
+  onLearnMore = (item) => {
+    this.props.navigation.navigate('Saibamais', {...item});
+}
 
   constructor(props){
     super(props);
@@ -37,64 +40,62 @@ export default class Home extends React.Component {
 
     if(this.state.isLoading){
       return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
+      <View style={{flex:1, alignItems:'center',justifyContent:'center', height:100}}>
+          <ActivityIndicator color='blue'/>
+      </View>
       )
-    }
+  }
 
     return(
       <Container>
-        <Header>
+        <Header style={{backgroundColor:'#ff0000'}}>
+        <StatusBar
+           backgroundColor='#333'
+         />
         <Left style={{flex: 1}}>
           <Button transparent transparent onPress={() => this.props.navigation.openDrawer('DrawerOpen')} >
               <Icon name='menu' />
           </Button>
           </Left>
-          <Body>
-            <Title style={{marginLeft: 2, marginRight: 2}}>Noticias</Title>
+          <Body style={styles.ajust}>
+            <Title>Noticias</Title>
           </Body>
           <Right style={{flex: 1}}/>
         </Header>
         <FlatList
           data={this.state.dataSource}
-          renderItem={({item}) => 
-          <Content>
-            <Card style={{flex: 0}}>
-              <CardItem>
-                <Left>
-                  <Thumbnail source={require('../img/logo.png')} />
-                  <Body>
-                    <Text style={{fontWeight:'bold'}}>{item.nome.toUpperCase()}</Text>
-                    <Text note>{moment(new Date(item.data_postagem)).format('llll')}</Text>
-                  </Body>
-                </Left>
-              </CardItem>
-              <CardItem>
-                  <Image source={{uri: item.foto}} style={{height: 200, width: 350, flex: 1}}/>
-              </CardItem>
-              <CardItem>
+          renderItem={({item}) =>
+        
+        <Content>
+          <List>
+            <ListItem thumbnail
+              onPress={()=> this.onLearnMore(item)}>
+              <Left>
+                <Thumbnail square source={{ uri: item.foto }}/>
+              </Left>
               <Body>
-              <Text style={{marginTop:5, textAlign:'justify'}}>
-                    {item.descricao}
-              </Text>
+                <Text style={{fontWeight:'bold', fontSize:11}}>{item.nome.toUpperCase()}</Text>
+                <Text style={{fontSize:10}}>{item.descricao.substr(0,28)+'..'}</Text>
               </Body>
-              </CardItem>
-              <CardItem>
-                <Left>
-                  <Button transparent textStyle={{color: '#87838B'}}>
-                    <Icon name="thumbs-up" />
-                    <Text>{item.comentario}</Text>
-                  </Button>
-                </Left>
-              </CardItem>
-            </Card>
-          </Content>
-
-        }
-          keyExtractor={(item, index) => index.toString()}
-        />
+              <Right>
+                <Text note>{moment(new Date(item.data_postagem)).format('h:mm:ss a')}</Text>
+              </Right>
+              </ListItem>
+            </List>
+        </Content>
+                }
+                keyExtractor={(item, index) =>index.toString()}
+                style={{flex:1}}
+                />
       </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  ajust: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+});
