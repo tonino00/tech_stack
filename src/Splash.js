@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 
 const logo = require('./img/logo.png');
 
@@ -30,6 +30,7 @@ export default class Splash extends Component {
             <Image
             source={logo}
             style={{ width:250, height:250}} />
+            <Text style={{fontSize:25, color:'#333'}}> +Viver</Text>
             </View>
           )
       }
