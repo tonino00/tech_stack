@@ -30,7 +30,7 @@ export default class Splash extends Component {
             <Image
             source={logo}
             style={{ width:250, height:250}} />
-            <Text style={{fontSize:25, color:'#333'}}> +Viver</Text>
+            <Text style={{fontSize:30, color:'#333', fontWeight:'bold'}}> +Viver</Text>
             </View>
           )
       }

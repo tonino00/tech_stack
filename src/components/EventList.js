@@ -59,7 +59,7 @@ export default class Eventos extends React.Component {
            />
             <Left style={{flex: 1}}>
             <Button transparent transparent>
-                <Icon name='close'  onPress={() => this.props.navigation.navigate('Eventos')} />
+                <Icon name='arrow-back'  onPress={() => this.props.navigation.navigate('Eventos')} />
             </Button>
             </Left>
             <Body style={styles.body}>

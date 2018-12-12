@@ -1,7 +1,7 @@
 import React from 'react';
-import { createDrawerNavigator, createStackNavigator} from 'react-navigation';
-import {Icon} from 'native-base';
-import {StyleSheet} from 'react-native';
+import { createDrawerNavigator, createStackNavigator } from 'react-navigation';
+import { Icon } from 'native-base';
+
 
 
 //Splash
@@ -22,116 +22,114 @@ import Register from '../Register';
 import EventList from '../EventList';
 
 // // Resetpw route
-// import ResetPassword  from '../ResetPassword';
+import ResetPassword  from '../ResetPassword';
 
 
 
 
-export const Drawer = createDrawerNavigator ({
+export const Drawer = createDrawerNavigator({
 
-		Splash: {
-			screen : Splash,
-			navigationOptions: {
-				 drawerLabel: () => null
-			}
-		},
-
-		Home: {
-			screen : Home,
-			navigationOptions: {
-				drawerLabel: 'Home',
-				drawerIcon: <Icon style={{color:'#1e90ff'}} name= "ios-home-outline"/>
-			}
-		},
+	Home: {
+		screen: Home,
+		navigationOptions: {
+			drawerLabel: 'Home',
+			drawerIcon: <Icon style={{ color: '#1e90ff' }} name="ios-home-outline" />
+		}
+	},
 
 
-		Saibamais: {
-			screen: Saibamais,
-			navigationOptions: {
-				drawerLabel: () => null
-		   }
-		},
+	Saibamais: {
+		screen: Saibamais,
+		navigationOptions: {
+			drawerLabel: () => null
+		}
+	},
 
-		EventList: {
-			screen: EventList,
-			navigationOptions: {
-				drawerLabel: () => null
-		   }
-		},
+	EventList: {
+		screen: EventList,
+		navigationOptions: {
+			drawerLabel: () => null
+		}
+	},
 
-		Eventos: {
-			screen: Eventos,
-			navigationOptions: {
-				drawerLabel: 'Eventos',
-				drawerIcon: <Icon style={{color:'#1e90ff'}} name="ios-calendar-outline"/>
-			}
-		},
+	Eventos: {
+		screen: Eventos,
+		navigationOptions: {
+			drawerLabel: 'Eventos',
+			drawerIcon: <Icon style={{ color: '#1e90ff' }} name="ios-calendar-outline" />
+		}
+	},
 
-		// Login: {
-		// 	screen: Login,
-		// 	navigationOptions: {
-		// 		drawerLabel: 'Login',
-		// 		drawerIcon: <Icon style={{color:'#1e90ff'}} name="person"/>
-		// 	}
-		// },
 
-		Duvidas: {
-			screen: Duvidas,
-			navigationOptions: {
-				drawerLabel: 'Saiba mais',
-				drawerIcon: <Icon style={{color:'#1e90ff'}} name="ios-bulb-outline"/>
-			}
-		},
+	Duvidas: {
+		screen: Duvidas,
+		navigationOptions: {
+			drawerLabel: 'Saiba mais',
+			drawerIcon: <Icon style={{ color: '#1e90ff' }} name="ios-bulb-outline" />
+		}
+	},
 
-		Videos: {
-			screen: Videos,
-			navigationOptions: {
-				drawerLabel: 'Videos',
-				drawerIcon: <Icon style={{color:'#1e90ff'}} name="ios-videocam-outline"/>
-			}
-		},
+	Videos: {
+		screen: Videos,
+		navigationOptions: {
+			drawerLabel: 'Videos',
+			drawerIcon: <Icon style={{ color: '#1e90ff' }} name="ios-videocam-outline" />
+		}
+	},
 
-		Favoritos: {
-			screen: Favoritos,
-			navigationOptions: {
-				drawerLabel: 'Favoritos',
-				drawerIcon: <Icon style={{color:'#1e90ff'}} name= "ios-heart-outline"/>
-			}
-		},
+	Favoritos: {
+		screen: Favoritos,
+		navigationOptions: {
+			drawerLabel: 'Favoritos',
+			drawerIcon: <Icon style={{ color: '#1e90ff' }} name="ios-heart-outline" />
+		}
+	},
 
-		Register: {
-			screen: Register,
-			navigationOptions: {
-				 drawerLabel: () => null
-			}
-		},
-		// ResetPassword: {
-		// 	screen: ResetPassword,
-		// 	navigationOptions: {
-		// 		 drawerLabel: () => null
-		// 	}
-		// },
 },
 
-{
-
-
-  transitionConfig: () => ({
-    transitionSpec: {
-      duration: 0,
-    },
-  }),
-},
+	{
+		transitionConfig: () => ({
+			transitionSpec: {
+				duration: 0,
+			},
+		}),
+	},
 
 );
 
 export const Root = createStackNavigator({
 
-		Drawer:{
-			screen: Drawer
+	Drawer: {
+		screen: Drawer
+	},
+	Splash: {
+		screen: Splash,
+		navigationOptions: {
+			drawerLabel: () => null
 		}
 	},
+	ResetPassword: {
+		screen: ResetPassword,
+		navigationOptions: {
+			drawerLabel: () => null
+		}
+	},
+	Register: {
+		screen: Register,
+		navigationOptions: {
+			drawerLabel: () => null
+		}
+	},
+	Login: {
+		screen: Login,
+		navigationOptions: {
+			drawerLabel: 'Login',
+			drawerIcon: <Icon style={{ color: '#1e90ff' }} name="person" />
+		}
+	},
+},
 	{
+		initialRouteName: 'Splash',
 		headerMode: 'none'
 	},
 	{
