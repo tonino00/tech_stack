@@ -58,7 +58,7 @@ export default class Favoritos extends Component {
            />
           <Left style={{flex: 1}}>
           <Button transparent transparent>
-                    <Icon name='close'  onPress={() => this.props.navigation.navigate('Home')} />
+                    <Icon name='arrow-back'  onPress={() => this.props.navigation.goBack()} />
             </Button>
           </Left>
           <Body style={styles.body}>
