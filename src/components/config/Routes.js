@@ -37,7 +37,6 @@ export const Drawer = createDrawerNavigator({
 		}
 	},
 
-
 	Saibamais: {
 		screen: Saibamais,
 		navigationOptions: {
@@ -102,12 +101,12 @@ export const Root = createStackNavigator({
 	Drawer: {
 		screen: Drawer
 	},
-	Splash: {
-		screen: Splash,
-		navigationOptions: {
-			drawerLabel: () => null
-		}
-	},
+	// Splash: {
+	// 	screen: Splash,
+	// 	navigationOptions: {
+	// 		drawerLabel: () => null
+	// 	}
+	// },
 	ResetPassword: {
 		screen: ResetPassword,
 		navigationOptions: {
@@ -129,7 +128,7 @@ export const Root = createStackNavigator({
 	},
 },
 	{
-		initialRouteName: 'Splash',
+		// initialRouteName: 'Home',
 		headerMode: 'none'
 	},
 	{

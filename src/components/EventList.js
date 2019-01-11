@@ -67,7 +67,7 @@ export default class Eventos extends React.Component {
             </Body>
             <Right style={{flex: 1}}/>
         </Header>
-        <Content>
+        <Content padder>
         <Card style={{flex:0}}>
             <CardItem>
               <Left>
@@ -79,7 +79,7 @@ export default class Eventos extends React.Component {
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={{uri:foto}} style={{width:null , height:200, flex:1}}/>
+              <Image source={{uri:foto}} style={{ height: 250, width: 300, flex: 1 }} />
             </CardItem>
             <CardItem>
               <Icon style={{color:'#ff0000'}} name="pin" />
