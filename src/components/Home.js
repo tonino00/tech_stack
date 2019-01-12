@@ -40,7 +40,7 @@ export default class Home extends React.Component {
 
     if(this.state.isLoading){
       return(
-      <View style={{flex:1, alignItems:'center',justifyContent:'center', height:100}}>
+      <View style={{flex:1, alignItems:'center',justifyContent:'center', height:100, backgroundColor:'#FFFFFF'}}>
           <ActivityIndicator color='blue'/>
       </View>
       )
