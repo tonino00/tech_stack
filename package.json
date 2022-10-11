@@ -14,7 +14,7 @@
     "native-base": "^2.8.0",
     "react": "16.3.1",
     "react-moment": "^0.7.0",
-    "react-native": "0.55.4",
+    "react-native": "0.70.2",
     "react-native-video": "^3.2.0",
     "react-native-video-player": "^0.9.1",
     "react-navigation": "^2.12.1"
